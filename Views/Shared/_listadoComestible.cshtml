@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Cineplus_DSW_Proyecto.Models.Comestible>
+
+
+<table class="table table-striped table-borderless table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idComestible)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcionComestible)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcionProveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+               double precio = item.precio;
+            string precioFormato = string.Format("{0:C}", precio);
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idComestible)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @precioFormato
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcionComestible)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcionProveedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "editar", new {  id=item.idComestible  },new {@class="btn btn-outline-info font-weight-bold"})
+                    @Html.ActionLink("Pedido", "pedido", new {  id=item.idComestible  },new {@class="btn btn-outline-secondary font-weight-bold"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
